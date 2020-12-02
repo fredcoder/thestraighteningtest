@@ -19,6 +19,11 @@ import SeesawRotate from '../../assets/images/Q9/Q9_Seesaw_Rotate_700x700.png';
 import Bangs from '../../assets/images/Q10/Q10_Bangs_700x700.png';
 import Explosion from '../../assets/images/explosion.png';
 import Confetti from '../../assets/images/confetti.png';
+
+import QuestionForm from '../../components/QuestionForm';
+import AnswerForm from '../../components/AnswerForm';
+import ResponseForm from '../../components/ResponseForm';
+
 import './styles.css';
 
 class Home extends Component {
@@ -36,18 +41,18 @@ class Home extends Component {
                 rotationImageUrl: "",
                 foregroundImageUrl: ""
             },
-            /*         {
-                         questionNumber: 2,
-                         questionText: "Can you straighten the zebra crossing?",
-                         questionType: "Degrees",
-                         correctAnswer: "45",
-                         originalRotation: 90,
-                         rotationDegrees: 5,
-                         backgroundImageUrl: ZebraCrossingBackground,
-                         rotationImageUrl: ZebraCrossingRotate,
-                         foregroundImageUrl: ""
-                     },*/
-            {
+         /*    {
+                questionNumber: 2,
+                questionText: "Can you straighten the zebra crossing?",
+                questionType: "Degrees",
+                correctAnswer: "45",
+                originalRotation: 90,
+                rotationDegrees: 5,
+                backgroundImageUrl: ZebraCrossingBackground,
+                rotationImageUrl: ZebraCrossingRotate,
+                foregroundImageUrl: ""
+            },
+       */      {
                 questionNumber: 3,
                 questionText: "Are the pink lines straight?",
                 questionType: "YesOrNot",
@@ -144,10 +149,13 @@ class Home extends Component {
     }
 
     countdown = 0;
+    timeOut = 0;
 
     refreshCountdown = () => {
+        console.log("refreshCountdown");
+        const thisShowWrongAnswer = this.showWrongAnswer.bind(this);
+        const thisStopCountdown = this.stopCountdown.bind(this);
 
-        const thisGetWrongPage = this.getWrongPage.bind(this);
         var seconds = document.getElementById("countdown").textContent;
         this.countdown = setInterval(function () {
             seconds--;
@@ -155,13 +163,16 @@ class Home extends Component {
                 document.getElementById("countdown").textContent = seconds;
 
                 if (seconds <= 0) {
-                    clearInterval(this.countdown);
+                    thisStopCountdown();
                     document.getElementById("countdown").textContent = 0;
-                    thisGetWrongPage();
+                    console.log("seconds: ", seconds);
+                    if (seconds === 0) {
+                        thisShowWrongAnswer();
+                    }
                     return;
                 }
             } catch {
-                clearInterval(this.countdown);
+                thisStopCountdown();
             }
 
         }, 1000);
@@ -171,7 +182,11 @@ class Home extends Component {
         clearInterval(this.countdown);
     }
 
-    showCorrectAnswer = () =>{
+    stopTimeOut = () => {
+        clearTimeout(this.timeOut);
+    }
+
+    showCorrectAnswer = () => {
         let { isQuestioning, isShowingAnswer, isCorrectAnswered } = this.state;
         const thisGetCorrectPage = this.getCorrectPage.bind(this);
 
@@ -187,13 +202,13 @@ class Home extends Component {
             isCorrectAnswered
         })
 
-        var timeOut = setTimeout(() => {
+        this.timeOut = setTimeout(() => {
             thisGetCorrectPage();
         }, 2000);
     }
 
-    showWrongAnswer = () =>{
-        let { isQuestioning, isShowingAnswer, isCorrectAnswered} = this.state;
+    showWrongAnswer = () => {
+        let { isQuestioning, isShowingAnswer, isCorrectAnswered } = this.state;
         const thisGetWrongPage = this.getWrongPage.bind(this);
 
         this.stopCountdown();
@@ -207,14 +222,18 @@ class Home extends Component {
             isShowingAnswer,
             isCorrectAnswered
         })
-
-        var timeOut = setTimeout(() => {
+        debugger;
+        this.timeOut = setTimeout(() => {
             thisGetWrongPage();
         }, 2000);
     }
 
     getCorrectPage = () => {
         let { score, isQuestioning, isShowingAnswer } = this.state;
+
+        debugger;
+        console.log("getCorrectPage");
+        this.stopTimeOut();
 
         score = score + 1;
         isQuestioning = false;
@@ -229,6 +248,10 @@ class Home extends Component {
 
     getWrongPage = () => {
         let { isQuestioning, isShowingAnswer } = this.state;
+
+        debugger;
+        console.log("getWrongPage");
+        this.stopTimeOut();
 
         isQuestioning = false;
         isShowingAnswer = false;
@@ -283,248 +306,69 @@ class Home extends Component {
             if (isQuestioning) {
                 return (
                     <React.Fragment>
-                        <div className="BackgroundPinkDivStyles">
+                        <div className="TimerDivStyles">
+                            <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
+                            <div className="TimerTextStyles">00.<span id="countdown">10</span></div>
                         </div>
-                        <div className="MainDivStyles">
-                            <div className="ScoreDivStyles">
-                                <p className="ScoreTextStyles">SCORE: {score}/{currentPage + 1}</p>
-                            </div>
-                            <div className="TimerDivStyles">
-                                <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
-                                <div className="TimerTextStyles">00.<span id="countdown">10</span></div>
-                            </div>
-                            <div className="OALogoDivStyles">
-                                <div>O</div>
-                                <div>A</div>
-                                <div><span>Ortondontics<br />Australia</span></div>
-                            </div>
-                            <div className="ImageDivStyles">
-                                <div className="ImageBoxStyles">
-                                    <img className="ImageBackgroundStyles" src={questionary[currentPage].backgroundImageUrl} alt={`Background_Q${currentPage}`} />
-                                    {(questionary[currentPage].questionType === "Degrees") &&
-                                        <img className="ImageRotateStyles" src={questionary[currentPage].rotationImageUrl} alt={`Rotate_Q${currentPage}`} />
-                                    }
-                                    {(questionary[currentPage].foregroundImageUrl != "") &&
-                                        <img className="ImageForegroundStyles" src={questionary[currentPage].foregroundImageUrl} alt={`Foreground_Q${currentPage}`} />
-                                    }
-                                </div>
-                            </div>
-                            <div className="QuestionDivStyles">{questionary[currentPage].questionText}</div>
-                            {(questionary[currentPage].questionType === "YesOrNot") &&
-                                <div className="AnswerOptionsStyles">
-                                    <p className="AnswerButtonStyles Yes" onClick={(questionary[currentPage].correctAnswer === "Yes") ? this.showCorrectAnswer : this.showWrongAnswer}>
-                                        <span>Yes</span>
-                                    </p>
-                                    <p className="AnswerButtonStyles No" onClick={(questionary[currentPage].correctAnswer === "No") ? this.showCorrectAnswer : this.showWrongAnswer}>
-                                        <span>No</span>
-                                    </p>
-                                </div>
-                            }
-                            {(questionary[currentPage].questionType === "Degrees") &&
-                                <div className="AnswerOptionsStyles">
-                                    <p className="AnswerButtonStyles Yes" onClick={this.getNextPage}>
-                                        <span>Left</span>
-                                    </p>
-                                    <p className="AnswerButtonStyles No" onClick={this.getNextPage}>
-                                        <span>Right</span>
-                                    </p>
-                                </div>
-                            }
-                        </div>
+                        <QuestionForm
+                            backgroundStyles={"BackgroundPinkDivStyles"}
+                            score={score}
+                            currentPage={currentPage}
+                            backgroundImageUrl={questionary[currentPage].backgroundImageUrl}
+                            rotationImageUrl={questionary[currentPage].rotationImageUrl}
+                            foregroundImageUrl={questionary[currentPage].foregroundImageUrl}
+                            questionText={questionary[currentPage].questionText}
+                            questionType={questionary[currentPage].questionType}
+                            correctAnswer={questionary[currentPage].correctAnswer}
+                            showCorrectAnswer={this.showCorrectAnswer}
+                            showWrongAnswer={this.showWrongAnswer}
+                            getNextPage={this.getNextPage}
+                        />
                     </React.Fragment>
                 )
             }
-            else if (isShowingAnswer) 
-            {
-                debugger;
-                if (isCorrectAnswered) {
-                    return (
-                        <React.Fragment>
-                            <div className="BackgroundPinkDivStyles">
-                            </div>
-                            <div className="MainDivStyles">
-                                <div className="ScoreDivStyles">
-                                    <p className="ScoreTextStyles">SCORE: {score}/{currentPage + 1}</p>
-                                </div>
-                                <div className="TimerDivStyles">
-                                    <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
-                                    <div className="TimerTextStyles">00.<span id="countdown">10</span></div>
-                                </div>
-                                <div className="OALogoDivStyles">
-                                    <div>O</div>
-                                    <div>A</div>
-                                    <div><span>Ortondontics<br />Australia</span></div>
-                                </div>
-                                <div className="ImageDivStyles">
-                                    <div className="ImageBoxStyles">
-                                        <img className="ImageBackgroundStyles" src={questionary[currentPage].backgroundImageUrl} alt={`Background_Q${currentPage}`} />
-                                        {(questionary[currentPage].questionType === "Degrees") &&
-                                            <img className="ImageRotateStyles" src={questionary[currentPage].rotationImageUrl} alt={`Rotate_Q${currentPage}`} />
-                                        }
-                                        {(questionary[currentPage].foregroundImageUrl != "") &&
-                                            <img className="ImageForegroundStyles" src={questionary[currentPage].foregroundImageUrl} alt={`Foreground_Q${currentPage}`} />
-                                        }
-                                    </div>
-                                </div>
-                                <div className="QuestionDivStyles">{questionary[currentPage].questionText}</div>
-                                {(questionary[currentPage].questionType === "YesOrNot") &&
-                                    <div className="AnswerOptionsStyles">
-                                        <p className={`AnswerButtonStyles Yes ${(questionary[currentPage].correctAnswer === "Yes") ? "Green": ""}`}>
-                                            <span>Yes</span>
-                                        </p>
-                                        <p className={`AnswerButtonStyles No ${(questionary[currentPage].correctAnswer === "No") ? "Green": ""}`}>
-                                            <span>No</span>
-                                        </p>
-                                    </div>
-                                }
-                                {(questionary[currentPage].questionType === "Degrees") &&
-                                    <div className="AnswerOptionsStyles">
-                                        <p className="AnswerButtonStyles Yes">
-                                            <span>Left</span>
-                                        </p>
-                                        <p className="AnswerButtonStyles No">
-                                            <span>Right</span>
-                                        </p>
-                                    </div>
-                                }
-                            </div>
-                        </React.Fragment>
-                    )
-                }
-                else {
-                    return (
-                        <React.Fragment>
-                            <div className="BackgroundPinkDivStyles">
-                            </div>
-                            <div className="MainDivStyles">
-                                <div className="ScoreDivStyles">
-                                    <p className="ScoreTextStyles">SCORE: {score}/{currentPage + 1}</p>
-                                </div>
-                                <div className="TimerDivStyles">
-                                    <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
-                                    <div className="TimerTextStyles">00.<span id="countdown">10</span></div>
-                                </div>
-                                <div className="OALogoDivStyles">
-                                    <div>O</div>
-                                    <div>A</div>
-                                    <div><span>Ortondontics<br />Australia</span></div>
-                                </div>
-                                <div className="ImageDivStyles">
-                                    <div className="ImageBoxStyles">
-                                        <img className="ImageBackgroundStyles" src={questionary[currentPage].backgroundImageUrl} alt={`Background_Q${currentPage}`} />
-                                        {(questionary[currentPage].questionType === "Degrees") &&
-                                            <img className="ImageRotateStyles" src={questionary[currentPage].rotationImageUrl} alt={`Rotate_Q${currentPage}`} />
-                                        }
-                                        {(questionary[currentPage].foregroundImageUrl != "") &&
-                                            <img className="ImageForegroundStyles" src={questionary[currentPage].foregroundImageUrl} alt={`Foreground_Q${currentPage}`} />
-                                        }
-                                    </div>
-                                </div>
-                                <div className="QuestionDivStyles">{questionary[currentPage].questionText}</div>
-                                {(questionary[currentPage].questionType === "YesOrNot") &&
-                                    <div className="AnswerOptionsStyles">
-                                        <p className={`AnswerButtonStyles Yes ${(questionary[currentPage].correctAnswer === "Yes") ? "": "Red"}`}>
-                                            <span>Yes</span>
-                                        </p>
-                                        <p className={`AnswerButtonStyles No ${(questionary[currentPage].correctAnswer === "No") ? "": "Red"}`}>
-                                            <span>No</span>
-                                        </p>
-                                    </div>
-                                }
-                                {(questionary[currentPage].questionType === "Degrees") &&
-                                    <div className="AnswerOptionsStyles">
-                                        <p className="AnswerButtonStyles Yes">
-                                            <span>Left</span>
-                                        </p>
-                                        <p className="AnswerButtonStyles No">
-                                            <span>Right</span>
-                                        </p>
-                                    </div>
-                                }
-                            </div>
-                        </React.Fragment>
-                    )
-                }
+            else if (isShowingAnswer) {
+                return (
+                    <React.Fragment>
+                        <div className="TimerDivStyles">
+                            <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
+                            <div className="TimerTextStyles">00.<span id="countdown">10</span></div>
+                        </div>
+                        <AnswerForm
+                            backgroundStyles={"BackgroundPinkDivStyles"}
+                            score={score}
+                            currentPage={currentPage}
+                            backgroundImageUrl={questionary[currentPage].backgroundImageUrl}
+                            rotationImageUrl={questionary[currentPage].rotationImageUrl}
+                            foregroundImageUrl={questionary[currentPage].foregroundImageUrl}
+                            questionText={questionary[currentPage].questionText}
+                            questionType={questionary[currentPage].questionType}
+                            correctAnswer={questionary[currentPage].correctAnswer}
+                            isCorrectAnswered={isCorrectAnswered}
+                        />
+                    </React.Fragment>
+                )
             }
             else {
-                if (isCorrectAnswered) {
-                    return (
-                        <React.Fragment>
-                            <div className="BackgroundPinkDivStyles Confetti">
-                            </div>
-                            <div className="MainDivStyles">
-                                <div className="ScoreDivStyles">
-                                    <p className="ScoreTextStyles">SCORE: {score}/{currentPage + 1}</p>
-                                </div>
-                                <div className="TimerDivStyles">
-                                    <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
-                                    <div className="TimerTextStyles">00.<span id="countdown">10</span></div>
-                                </div>
-                                <div className="OALogoDivStyles">
-                                    <div>O</div>
-                                    <div>A</div>
-                                    <div><span>Ortondontics<br />Australia</span></div>
-                                </div>
-                                <div className="ImageDivStyles">
-                                    <div className="ImageBoxStyles">
-                                        <img className="ImageBackgroundStyles" src={questionary[currentPage].backgroundImageUrl} alt={`Background_Q${currentPage}`} />
-                                        {(questionary[currentPage].questionType === "Degrees") &&
-                                            <img className="ImageRotateStyles" src={questionary[currentPage].rotationImageUrl} alt={`Rotate_Q${currentPage}`} />
-                                        }
-                                        {(questionary[currentPage].foregroundImageUrl != "") &&
-                                            <img className="ImageForegroundStyles" src={questionary[currentPage].foregroundImageUrl} alt={`Foreground_Q${currentPage}`} />
-                                        }
-                                    </div>
-                                </div>
-                                <div className="QuestionDivStyles">Great job!</div>
-                                <div className="HomeButtonDivStyles">
-                                    <p className="HomeButtonStyles" onClick={this.getNextPage}>
-                                        <span>Next</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </React.Fragment>
-                    )
-                }
-                else {
-                    return (
-                        <React.Fragment>
-                            <div className="BackgroundPinkDivStyles">
-                            </div>
-                            <div className="MainDivStyles">
-                                <div className="ScoreDivStyles">
-                                    <p className="ScoreTextStyles">SCORE: {score}/{currentPage + 1}</p>
-                                </div>
-                                <div className="TimerDivStyles">
-                                    <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
-                                    <div className="TimerTextStyles">00.<span id="countdown">10</span></div>
-                                </div>
-                                <div className="OALogoDivStyles">
-                                    <div>O</div>
-                                    <div>A</div>
-                                    <div><span>Ortondontics<br />Australia</span></div>
-                                </div>
-                                <div className="ImageDivStyles">
-                                    <div className="ImageBoxStyles">
-                                        <img className="ImageBackgroundStyles" src={Explosion} alt={`Background_Q${currentPage}`} />
-                                        {(questionary[currentPage].questionType === "Degrees") &&
-                                            <img className="ImageRotateStyles" src={questionary[currentPage].rotationImageUrl} alt={`Rotate_Q${currentPage}`} />
-                                        }
-                                        {(questionary[currentPage].foregroundImageUrl != "") &&
-                                            <img className="ImageForegroundStyles" src={questionary[currentPage].foregroundImageUrl} alt={`Foreground_Q${currentPage}`} />
-                                        }
-                                    </div>
-                                </div>
-                                <div className="QuestionDivStyles">Incorrect...</div>
-                                <div className="HomeButtonDivStyles">
-                                    <p className="HomeButtonStyles" onClick={this.getNextPage}>
-                                        <span>Next</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </React.Fragment>
-                    )
-                }
+                return (
+                    <React.Fragment>
+                        <div className="TimerDivStyles">
+                            <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
+                            <div className="TimerTextStyles">00.<span id="countdown">10</span></div>
+                        </div>
+                        <ResponseForm
+                            backgroundStyles={"BackgroundPinkDivStyles"}
+                            score={score}
+                            currentPage={currentPage}
+                            backgroundImageUrl={questionary[currentPage].backgroundImageUrl}
+                            rotationImageUrl={questionary[currentPage].rotationImageUrl}
+                            foregroundImageUrl={questionary[currentPage].foregroundImageUrl}
+                            questionType={questionary[currentPage].questionType}
+                            isCorrectAnswered={isCorrectAnswered}
+                            getNextPage={this.getNextPage}
+                        />
+                    </React.Fragment>
+                )
             }
         }
     }
