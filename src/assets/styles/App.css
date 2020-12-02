@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: 'GalanoGrotesque';
+    src:  url('../fonts/Galano-Grotesque-DEMO-Bold.ttf.woff') format('woff'),
+    url('../fonts/Galano-Grotesque-DEMO-Bold.ttf.svg#Galano-Grotesque-DEMO-Bold') format('svg'),
+    url('../fonts/Galano-Grotesque-DEMO-Bold.ttf.eot');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'digital-7';
+    src:  url('../fonts/digital-7-italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

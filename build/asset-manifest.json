@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ffb71ab3.chunk.css",
+    "main.js": "/static/js/main.bc21f030.chunk.js",
+    "main.js.map": "/static/js/main.bc21f030.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0b7a13dd.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0b7a13dd.js.map",
+    "static/js/2.0ccfcc01.chunk.js": "/static/js/2.0ccfcc01.chunk.js",
+    "static/js/2.0ccfcc01.chunk.js.map": "/static/js/2.0ccfcc01.chunk.js.map",
+    "static/js/3.2502bd01.chunk.js": "/static/js/3.2502bd01.chunk.js",
+    "static/js/3.2502bd01.chunk.js.map": "/static/js/3.2502bd01.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.ffb71ab3.chunk.css.map": "/static/css/main.ffb71ab3.chunk.css.map",
+    "static/js/2.0ccfcc01.chunk.js.LICENSE.txt": "/static/js/2.0ccfcc01.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/digital-7-italic.3864737f.ttf",
+    "static/media/Q10_Bangs_700x700.66f245f5.png": "/static/media/Q10_Bangs_700x700.66f245f5.png",
+    "static/media/Q1_TowerOfPisa_700x700.1411ddc5.png": "/static/media/Q1_TowerOfPisa_700x700.1411ddc5.png",
+    "static/media/Q2_Zebra Crossing_Background_700x700.03fd57a0.png": "/static/media/Q2_Zebra Crossing_Background_700x700.03fd57a0.png",
+    "static/media/Q2_Zebra Crossing_Rotate_700x700.8d658794.png": "/static/media/Q2_Zebra Crossing_Rotate_700x700.8d658794.png",
+    "static/media/Q3_Optical_700x700.3b337ab6.gif": "/static/media/Q3_Optical_700x700.3b337ab6.gif",
+    "static/media/Q4_Window_Cleaners_Background_700x700.722bd827.png": "/static/media/Q4_Window_Cleaners_Background_700x700.722bd827.png",
+    "static/media/Q4_Window_Cleaners_Cables_700x700.9df35502.png": "/static/media/Q4_Window_Cleaners_Cables_700x700.9df35502.png",
+    "static/media/Q4_Window_Cleaners_Rotate_700x700.b5a1b621.png": "/static/media/Q4_Window_Cleaners_Rotate_700x700.b5a1b621.png",
+    "static/media/Q5_Signs_700x700.0f8b8fa5.png": "/static/media/Q5_Signs_700x700.0f8b8fa5.png",
+    "static/media/Q6_Windows_700x700.44cdc850.png": "/static/media/Q6_Windows_700x700.44cdc850.png",
+    "static/media/Q7_Framed Picture_Background_700x700.3e95467f.png": "/static/media/Q7_Framed Picture_Background_700x700.3e95467f.png",
+    "static/media/Q7_Framed Picture_Rotate_700x700.4aaa5b84.png": "/static/media/Q7_Framed Picture_Rotate_700x700.4aaa5b84.png",
+    "static/media/Q8_Wall_700x700.1930f479.png": "/static/media/Q8_Wall_700x700.1930f479.png",
+    "static/media/Q9_Seesaw_Background_700x700.72157294.png": "/static/media/Q9_Seesaw_Background_700x700.72157294.png",
+    "static/media/Q9_Seesaw_Foreground_700x700.eb8193ed.png": "/static/media/Q9_Seesaw_Foreground_700x700.eb8193ed.png",
+    "static/media/Q9_Seesaw_Rotate_700x700.aeff75b4.png": "/static/media/Q9_Seesaw_Rotate_700x700.aeff75b4.png",
+    "static/media/styles.css": "/static/media/confetti.15246f62.png",
+    "static/media/explosion.aa085e28.png": "/static/media/explosion.aa085e28.png",
+    "static/media/logo.6ce24c58.svg": "/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0b7a13dd.js",
+    "static/js/2.0ccfcc01.chunk.js",
+    "static/css/main.ffb71ab3.chunk.css",
+    "static/js/main.bc21f030.chunk.js"
+  ]
+}
