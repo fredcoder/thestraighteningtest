@@ -19,6 +19,7 @@ import SeesawRotate from '../../assets/images/Q9/Q9_Seesaw_Rotate_700x700.png';
 import Bangs from '../../assets/images/Q10/Q10_Bangs_700x700.png';
 import Explosion from '../../assets/images/explosion.png';
 import Confetti from '../../assets/images/confetti.png';
+import DottedLine from '../../assets/images/dotted-line_200_200.png';
 
 import QuestionForm from '../../components/QuestionForm';
 import AnswerForm from '../../components/AnswerForm';
@@ -33,113 +34,123 @@ class Home extends Component {
             {
                 questionNumber: 1,
                 questionText: "Is the Leaning Tower of Pisa straight?",
-                questionType: "YesOrNot",
+                questionType: "YesOrNo",
                 correctAnswer: "No",
-                originalRotation: 0,
+                originalPosition: 0,
                 rotationDegrees: 0,
                 backgroundImageUrl: TowerOfPisa,
                 rotationImageUrl: "",
-                foregroundImageUrl: ""
+                foregroundImageUrl: "", 
+                dottedImageUrl: DottedLine
             },
-         /*    {
+           {
                 questionNumber: 2,
                 questionText: "Can you straighten the zebra crossing?",
                 questionType: "Degrees",
-                correctAnswer: "45",
-                originalRotation: 90,
-                rotationDegrees: 5,
+                correctAnswer: "0",
+                originalPosition: -9,
+                rotationDegrees: 1,
                 backgroundImageUrl: ZebraCrossingBackground,
                 rotationImageUrl: ZebraCrossingRotate,
-                foregroundImageUrl: ""
+                foregroundImageUrl: "", 
+                dottedImageUrl: DottedLine
             },
-       */      {
+            {
                 questionNumber: 3,
                 questionText: "Are the pink lines straight?",
-                questionType: "YesOrNot",
+                questionType: "YesOrNo",
                 correctAnswer: "Yes",
-                originalRotation: 90,
-                rotationDegrees: 5,
+                originalPosition: 0,
+                rotationDegrees: 0,
                 backgroundImageUrl: Optical,
                 rotationImageUrl: "",
-                foregroundImageUrl: ""
+                foregroundImageUrl: "", 
+                dottedImageUrl: DottedLine
             },
-    /*         {
+            {
                 questionNumber: 4,
                 questionText: "Can you straighten the platform?",
                 questionType: "Degrees",
-                correctAnswer: "45",
-                originalRotation: 90,
-                rotationDegrees: 5,
+                correctAnswer: "0",
+                originalPosition: 6,
+                rotationDegrees: 0.5,
                 backgroundImageUrl: WindowCleanersBackground,
                 rotationImageUrl: WindowCleanersRotates,
-                foregroundImageUrl: WindowCleanersCables
+                foregroundImageUrl: WindowCleanersCables,
+                dottedImageUrl: DottedLine
             },
-      */      {
+            {
                 questionNumber: 5,
                 questionText: "Is the stop sign straight?",
-                questionType: "YesOrNot",
+                questionType: "YesOrNo",
                 correctAnswer: "No",
-                originalRotation: 90,
-                rotationDegrees: 5,
+                originalPosition: 0,
+                rotationDegrees: 0,
                 backgroundImageUrl: Signs,
                 rotationImageUrl: "",
-                foregroundImageUrl: ""
+                foregroundImageUrl: "", 
+                dottedImageUrl: DottedLine
             },
             {
                 questionNumber: 6,
                 questionText: "Are the bottoms of the windows straight?",
-                questionType: "YesOrNot",
+                questionType: "YesOrNo",
                 correctAnswer: "No",
-                originalRotation: 90,
-                rotationDegrees: 5,
+                originalPosition: 0,
+                rotationDegrees: 0,
                 backgroundImageUrl: Windows,
                 rotationImageUrl: "",
-                foregroundImageUrl: ""
+                foregroundImageUrl: "", 
+                dottedImageUrl: DottedLine
             },
-   /*          {
+              {
                 questionNumber: 7,
                 questionText: "Can you straighten the picture frame?",
                 questionType: "Degrees",
-                correctAnswer: "45",
-                originalRotation: 90,
-                rotationDegrees: 5,
+                correctAnswer: "0",
+                originalPosition: 8,
+                rotationDegrees: 0.5,
                 backgroundImageUrl: FramedPictureBackground,
                 rotationImageUrl: FramedPictureRotate,
-                foregroundImageUrl: ""
+                foregroundImageUrl: "", dottedImageUrl: DottedLine,
+                dottedImageUrl: DottedLine
             },
-        */    {
+            {
                 questionNumber: 8,
                 questionText: "Is the top of the brick wall straight?",
-                questionType: "YesOrNot",
+                questionType: "YesOrNo",
                 correctAnswer: "Yes",
-                originalRotation: 90,
-                rotationDegrees: 5,
+                originalPosition: 0,
+                rotationDegrees: 0,
                 backgroundImageUrl: Wall,
                 rotationImageUrl: "",
-                foregroundImageUrl: ""
+                foregroundImageUrl: "", 
+                dottedImageUrl: DottedLine
             },
-   /*          {
+             {
                 questionNumber: 9,
                 questionText: "Can you straighten this see-saw?",
                 questionType: "Degrees",
-                correctAnswer: "45",
-                originalRotation: 90,
-                rotationDegrees: 5,
+                correctAnswer: "0",
+                originalPosition: -10,
+                rotationDegrees: 0.5,
                 backgroundImageUrl: SeesawBackground,
                 rotationImageUrl: SeesawRotate,
-                foregroundImageUrl: SeesawForeground
+                foregroundImageUrl: SeesawForeground,
+                dottedImageUrl: DottedLine
            },
-   */         {
+           {
                 questionNumber: 10,
                 questionText: "Is this fringe really straight?",
-                questionType: "YesOrNot",
+                questionType: "YesOrNo",
                 correctAnswer: "No",
-                originalRotation: 90,
-                rotationDegrees: 5,
+                originalPosition: 0,
+                rotationDegrees: 0,
                 backgroundImageUrl: Bangs,
                 rotationImageUrl: "",
-                foregroundImageUrl: ""
-            },
+                foregroundImageUrl: "", 
+                dottedImageUrl: DottedLine
+                },
         ],
         currentPage: -1,
         score: 0,
@@ -222,7 +233,6 @@ class Home extends Component {
             isShowingAnswer,
             isCorrectAnswered
         })
-        debugger;
         this.timeOut = setTimeout(() => {
             thisGetWrongPage();
         }, 2000);
@@ -231,7 +241,7 @@ class Home extends Component {
     getCorrectPage = () => {
         let { score, isQuestioning, isShowingAnswer } = this.state;
 
-        debugger;
+        
         console.log("getCorrectPage");
         this.stopTimeOut();
 
@@ -249,7 +259,7 @@ class Home extends Component {
     getWrongPage = () => {
         let { isQuestioning, isShowingAnswer } = this.state;
 
-        debugger;
+        
         console.log("getWrongPage");
         this.stopTimeOut();
 
@@ -294,9 +304,9 @@ class Home extends Component {
                             <p>Can you get 10/10?</p>
                         </div>
                         <div className="HomeButtonDivStyles">
-                            <p className="HomeButtonStyles" onClick={this.getNextPage}>
-                                <span>Play</span>
-                            </p>
+                            <div className="HomeButtonStyles" onClick={this.getNextPage}>
+                                Play
+                            </div>
                         </div>
                     </div>
                 </React.Fragment>
@@ -320,14 +330,16 @@ class Home extends Component {
                             questionText={questionary[currentPage].questionText}
                             questionType={questionary[currentPage].questionType}
                             correctAnswer={questionary[currentPage].correctAnswer}
+                            originalPosition={questionary[currentPage].originalPosition}
+                            rotationDegrees={questionary[currentPage].rotationDegrees}
                             showCorrectAnswer={this.showCorrectAnswer}
                             showWrongAnswer={this.showWrongAnswer}
-                            getNextPage={this.getNextPage}
                         />
                     </React.Fragment>
                 )
             }
             else if (isShowingAnswer) {
+                debugger;
                 return (
                     <React.Fragment>
                         <div className="TimerDivStyles">
@@ -341,6 +353,7 @@ class Home extends Component {
                             backgroundImageUrl={questionary[currentPage].backgroundImageUrl}
                             rotationImageUrl={questionary[currentPage].rotationImageUrl}
                             foregroundImageUrl={questionary[currentPage].foregroundImageUrl}
+                            dottedImageUrl={questionary[currentPage].dottedImageUrl}
                             questionText={questionary[currentPage].questionText}
                             questionType={questionary[currentPage].questionType}
                             correctAnswer={questionary[currentPage].correctAnswer}
@@ -350,6 +363,7 @@ class Home extends Component {
                 )
             }
             else {
+                
                 return (
                     <React.Fragment>
                         <div className="TimerDivStyles">
@@ -363,6 +377,7 @@ class Home extends Component {
                             backgroundImageUrl={questionary[currentPage].backgroundImageUrl}
                             rotationImageUrl={questionary[currentPage].rotationImageUrl}
                             foregroundImageUrl={questionary[currentPage].foregroundImageUrl}
+                            dottedImageUrl={questionary[currentPage].dottedImageUrl}
                             questionType={questionary[currentPage].questionType}
                             isCorrectAnswered={isCorrectAnswered}
                             getNextPage={this.getNextPage}

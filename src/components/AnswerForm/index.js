@@ -4,7 +4,7 @@ import './styles.css';
 
 const AnswerForm = (props) => {
 
-    let { backgroundStyles, score, currentPage, backgroundImageUrl, rotationImageUrl, foregroundImageUrl, questionText, questionType, correctAnswer, isCorrectAnswered } = props;
+    let { backgroundStyles, score, currentPage, backgroundImageUrl, rotationImageUrl, foregroundImageUrl, dottedImageUrl, questionText, questionType, correctAnswer, isCorrectAnswered } = props;
 
     return (
         <React.Fragment>
@@ -21,29 +21,34 @@ const AnswerForm = (props) => {
                 </div>
                 <div className="ImageDivStyles">
                     <div className="ImageBoxStyles">
-                        <img className="ImageBackgroundStyles" src={backgroundImageUrl} alt={`Background_Q${currentPage}`} />
+                        <img className="ImageBackgroundStyles" src={backgroundImageUrl} alt={`Background_Q${currentPage}`} />   
+                        {(questionType === "YesOrNo") &&
+                            <img className="ImageDottedStyles" src={dottedImageUrl} alt={`Dotted_Q${currentPage}`} />
+                        }                     
                         {(questionType === "Degrees") &&
+                        <React.Fragment>
                             <img className="ImageRotateStyles" src={rotationImageUrl} alt={`Rotate_Q${currentPage}`} />
+                            <img className="ImageDottedStyles DottedAdjustment" src={dottedImageUrl} alt={`Dotted_Q${currentPage}`} />
+                        </React.Fragment>
                         }
                         {(foregroundImageUrl != "") &&
-                            <img className="ImageForegroundStyles" src={foregroundImageUrl} alt={`Foreground_Q${currentPage}`} />
-                        }
+                            <img className="ImageForegroundStyles ForegroundAdjustment" src={foregroundImageUrl} alt={`Foreground_Q${currentPage}`} />
+                        }                        
                     </div>
                 </div>
                 <div className="QuestionDivStyles">{questionText}</div>
-                {(questionType === "YesOrNot") &&
+                {(questionType === "YesOrNo") &&
                     <div className="AnswerOptionsStyles">
                         {(isCorrectAnswered)
                             ?
                             <React.Fragment>
-                                <p className={`AnswerButtonStyles Yes ${(correctAnswer === "Yes") ? "Green" : ""}`}>
+                                <div className={`AnswerButtonStyles Yes ${(correctAnswer === "Yes") ? "Green" : ""}`}>
                                     <span>Yes</span>
-                                </p>
-                                <p className={`AnswerButtonStyles No ${(correctAnswer === "No") ? "Green" : ""}`}>
+                                </div>
+                                <div className={`AnswerButtonStyles No ${(correctAnswer === "No") ? "Green" : ""}`}>
                                     <span>No</span>
-                                </p>
+                                </div>
                             </React.Fragment>
-
                             :
                             <React.Fragment>
                                 {(document.getElementById("countdown").textContent === "0")
@@ -72,12 +77,12 @@ const AnswerForm = (props) => {
                 }
                 {(questionType === "Degrees") &&
                     <div className="AnswerOptionsStyles">
-                        <p className="AnswerButtonStyles Yes">
+                        <div className="AnswerButtonStyles Yes">
                             <span>Left</span>
-                        </p>
-                        <p className="AnswerButtonStyles No">
+                        </div>
+                        <div className="AnswerButtonStyles No">
                             <span>Right</span>
-                        </p>
+                        </div>
                     </div>
                 }
             </div>

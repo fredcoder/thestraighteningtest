@@ -41,20 +41,30 @@
 }
 
 .HomeButtonStyles {
+    outline: none;
     display: inline;
-    width: 105px;
-    height: 49px;
-    padding: 12px 28px 11px 30px;
-    border: solid 2.7px #231f20;
+    padding: 11px 24px 11px 24px;
+    border: solid 3px #231f20;
     border-radius: 25px;
     background-color: white;
     cursor: pointer;
-}
-
-.HomeButtonStyles span{
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
     font-family: GalanoGrotesque;
     font-weight: bold;
     font-size: 18px;
+}
+
+.HomeButtonStyles:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 /* QUESTIONARY */
@@ -68,7 +78,7 @@
     z-index: -100;
 }
 
-.Confetti{
+.Confetti {
     background-image: url(../../assets/images/confetti.png);
 }
 
@@ -134,6 +144,7 @@
     height: 36px;
     background-color: #086082;
     color: white;
+    font-size: 14px;
 }
 
 .OALogoDivStyles div {
@@ -142,7 +153,7 @@
 
 .ImageDivStyles {
     margin: 0 auto;
-    margin-top: 336px;
+    margin-top: 236px;
     width: 350px;
     height: 350px;
     background-color: #d8d8d8;
@@ -163,9 +174,23 @@
     top: -353px;
 }
 
+.ImageDottedStyles {
+    position: relative;
+    top: -353px;
+    filter: invert(1);
+}
+
 .ImageForegroundStyles {
     position: relative;
     top: -706px;
+}
+
+.DottedAdjustment {
+    top: -706px;
+}
+
+.ForegroundAdjustment {
+    top: -1059px;
 }
 
 .QuestionDivStyles {
@@ -204,37 +229,47 @@
 }
 
 .AnswerButtonStyles {
+    outline: none;
     display: inline;
-    width: 105px;
-    height: 49px;
-    padding: 12px 28px 11px 30px;
-    border: solid 2.7px #231f20;
+    padding: 11px 26px 11px 26px;
+    border: solid 3px #231f20;
     border-radius: 25px;
     background-color: white;
     cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    font-family: GalanoGrotesque;
+    font-size: 18px;
+    font-weight: bold;
+    color: #231f20;
+}
+
+.AnswerButtonStyles:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .Yes {
-    margin-right: 4.5px;
+    margin-right: 8px;
 }
 
 .No {
-    margin-left: 4.5px;
+    margin-left: 8px;
 }
 
-.Green{
+.Green {
     background-color: rgb(156, 217, 100) !important;
 }
 
-.Red{
+.Red {
     background-color: rgb(235, 78, 80) !important;
-}
-
-.AnswerButtonStyles span {
-    font-family: GalanoGrotesque;
-    font-size: 26px;
-    font-weight: bold;
-    color: #231f20;
 }
 
 /* Media Query for Mobile */
@@ -314,10 +349,11 @@
         height: 30px;
         background-color: #086082;
         color: white;
+        font-size: 12px;
     }
     .ImageDivStyles {
         margin: 0 auto;
-        margin-top: 133px;
+        margin-top: 160px;
         width: 240px;
         height: 240px;
         background-color: #d8d8d8;
@@ -337,12 +373,10 @@
         display: inline;
         width: 224px;
         height: 40px;
-        padding: 11px 24px 11px 24px;
+        padding: 13px 24px 13px 24px;
         border-radius: 25px;
         border: solid 3px #000000;
         background-color: white;
-    }
-    .AnswerButtonStyles span {
         font-family: GalanoGrotesque;
         font-size: 18px;
         font-weight: bold;
@@ -355,5 +389,15 @@
     .ImageForegroundStyles {
         position: relative;
         top: -486px;
+    }
+    .ImageDottedStyles {
+        position: relative;
+        top: -243px;
+    }
+    .DottedAdjustment {
+        top: -486px;
+    }
+    .ForegroundAdjustment {
+        top: -729px;
     }
 }
