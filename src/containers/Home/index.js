@@ -1,22 +1,69 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import TimerIcon from '../../assets/images/timer-icon.png';
-import TowerOfPisa from '../../assets/images/Q1/Q1_TowerOfPisa_700x700.png';
-import ZebraCrossingBackground from '../../assets/images/Q2/Q2_Zebra Crossing_Background_700x700.png';
-import ZebraCrossingRotate from '../../assets/images/Q2/Q2_Zebra Crossing_Rotate_700x700.png';
-import Optical from '../../assets/images/Q3/Q3_Optical_700x700.gif';
-import WindowCleanersBackground from '../../assets/images/Q4/Q4_Window_Cleaners_Background_700x700.png';
-import WindowCleanersCables from '../../assets/images/Q4/Q4_Window_Cleaners_Cables_700x700.png';
-import WindowCleanersRotates from '../../assets/images/Q4/Q4_Window_Cleaners_Rotate_700x700.png';
-import Signs from '../../assets/images/Q5/Q5_Signs_700x700.png';
-import Windows from '../../assets/images/Q6/Q6_Windows_700x700.png';
-import FramedPictureBackground from '../../assets/images/Q7/Q7_Framed Picture_Background_700x700.png';
-import FramedPictureRotate from '../../assets/images/Q7/Q7_Framed Picture_Rotate_700x700.png';
-import Wall from '../../assets/images/Q8/Q8_Wall_700x700.png';
-import SeesawBackground from '../../assets/images/Q9/Q9_Seesaw_Background_700x700.png';
-import SeesawForeground from '../../assets/images/Q9/Q9_Seesaw_Foreground_700x700.png';
-import SeesawRotate from '../../assets/images/Q9/Q9_Seesaw_Rotate_700x700.png';
-import Bangs from '../../assets/images/Q10/Q10_Bangs_700x700.png';
+
+/* DESKTOP */
+import TowerOfPisa from '../../assets/images/Desktop/Q1/Q1_TowerOfPisa_700x700.png';
+
+import ZebraCrossingBackground from '../../assets/images/Desktop/Q2/Q2_Zebra_Crossing_Background_700x700.png';
+import ZebraCrossingRotate from '../../assets/images/Desktop/Q2/Q2_Zebra_Crossing_Rotate_700x700.png';
+
+import Optical from '../../assets/images/Desktop/Q3/Q3_Optical_700x700.gif';
+
+import WindowCleanersBackground from '../../assets/images/Desktop/Q4/Q4_Window_Cleaners_Background_700x700.png';
+import WindowCleanersRotates from '../../assets/images/Desktop/Q4/Q4_Window_Cleaners_Rotate_700x700.png';
+import WindowCleanersBackgroundLines from '../../assets/images/Desktop/Q4/Q4_Window_Cleaners_Lines_700x700.png';
+
+import Signs from '../../assets/images/Desktop/Q5/Q5_Signs_700x700.png';
+
+import Windows from '../../assets/images/Desktop/Q6/Q6_Windows_700x700.png';
+
+import FramedPictureBackground from '../../assets/images/Desktop/Q7/Q7_Framed_Picture_Background_700x700.png';
+import FramedPictureRotate from '../../assets/images/Desktop/Q7/Q7_Framed_Picture_Rotate_700x700.png';
+
+import Wall from '../../assets/images/Desktop/Q8/Q8_Wall_700x700.png';
+
+import SeesawBackground from '../../assets/images/Desktop/Q9/Q9_Seesaw_Background_700x700.png';
+import SeesawForeground from '../../assets/images/Desktop/Q9/Q9_Seesaw_Foreground_700x700.png';
+import SeesawRotate from '../../assets/images/Desktop/Q9/Q9_Seesaw_Rotate_700x700.png';
+
+import Bangs from '../../assets/images/Desktop/Q10/Q10_Bangs_700x700.png';
+
+/* MOBILE */
+import Mobile_TowerOfPisa from '../../assets/images/Mobile/Q1/Q1_TowerOfPisa_480x620.png';
+import Mobile_TowerOfPisaLines from '../../assets/images/Mobile/Q1/Q1_TowerOfPisa_Lines_480x620.png';
+
+import Mobile_ZebraCrossingBackground from '../../assets/images/Mobile/Q2/Q2_Zebra_Crossing_Background_480x620.png';
+import Mobile_ZebraCrossingRotate from '../../assets/images/Mobile/Q2/Q2_Zebra_Crossing_Rotate_480x620.png';
+import Mobile_ZebraCrossingLines from '../../assets/images/Mobile/Q2/Q2_Zebra_Crossing_Lines_480x620.png';
+
+/*import Mobile_Optical from '../../assets/images/Mobile/Q3/Q3_Optical_480x620.gif';*/
+
+import Mobile_WindowCleanersBackground from '../../assets/images/Mobile/Q4/Q4_Window_Cleaners_Background_480x620.png';
+import Mobile_WindowCleanersRotates from '../../assets/images/Mobile/Q4/Q4_Window_Cleaners_Rotate_480x620.png';
+import Mobile_WindowCleanersBackgroundLines from '../../assets/images/Mobile/Q4/Q4_Window_Cleaners_Lines_480x620.png';
+
+import Mobile_Signs from '../../assets/images/Mobile/Q5/Q5_Signs_480x620.png';
+import Mobile_Signs_Lines from '../../assets/images/Mobile/Q5/Q5_Signs_Lines_480x620.png';
+
+import Mobile_Windows from '../../assets/images/Mobile/Q6/Q6_Windows_480x620.png';
+import Mobile_Windows_Lines from '../../assets/images/Mobile/Q6/Q6_Windows_Lines_480x620.png';
+
+import Mobile_FramedPictureBackground from '../../assets/images/Mobile/Q7/Q7_Framed_Picture_Background_480x620.png';
+import Mobile_FramedPictureRotate from '../../assets/images/Mobile/Q7/Q7_Framed_Picture_Rotate_480x620.png';
+import Mobile_FramedPictureLines from '../../assets/images/Mobile/Q7/Q7_Framed_Picture_Lines_480x620.png';
+
+import Mobile_Wall from '../../assets/images/Mobile/Q8/Q8_Wall_480x620.png';
+import Mobile_Wall_Lines from '../../assets/images/Mobile/Q8/Q8_Wall_Lines_480x620.png';
+
+import Mobile_SeesawBackground from '../../assets/images/Mobile/Q9/Q9_Seesaw_Background_480x620.png';
+import Mobile_SeesawForeground from '../../assets/images/Mobile/Q9/Q9_Seesaw_Foreground_480x620.png';
+import Mobile_SeesawRotate from '../../assets/images/Mobile/Q9/Q9_Seesaw_Rotate_480x620.png';
+import Mobile_SeesawLines from '../../assets/images/Mobile/Q9/Q9_Seesaw_Lines_480x620.png';
+
+import Mobile_Bangs from '../../assets/images/Mobile/Q10/Q10_Bangs_480x620.png';
+import Mobile_Bangs_Lines from '../../assets/images/Mobile/Q10/Q10_Bangs_Lines_480x620.png';
+
 import Explosion from '../../assets/images/explosion.png';
 import Confetti from '../../assets/images/confetti.png';
 import DottedLine from '../../assets/images/dotted-line_200_200.png';
@@ -29,134 +76,141 @@ import './styles.css';
 
 class Home extends Component {
 
-    state = {
-        questionary: [
-            {
-                questionNumber: 1,
-                questionText: "Is the Leaning Tower of Pisa straight?",
-                questionType: "YesOrNo",
-                correctAnswer: "No",
-                originalPosition: 0,
-                rotationDegrees: 0,
-                backgroundImageUrl: TowerOfPisa,
-                rotationImageUrl: "",
-                foregroundImageUrl: "", 
-                dottedImageUrl: DottedLine
-            },
-           {
-                questionNumber: 2,
-                questionText: "Can you straighten the zebra crossing?",
-                questionType: "Degrees",
-                correctAnswer: "0",
-                originalPosition: -9,
-                rotationDegrees: 1,
-                backgroundImageUrl: ZebraCrossingBackground,
-                rotationImageUrl: ZebraCrossingRotate,
-                foregroundImageUrl: "", 
-                dottedImageUrl: DottedLine
-            },
-            {
-                questionNumber: 3,
-                questionText: "Are the pink lines straight?",
-                questionType: "YesOrNo",
-                correctAnswer: "Yes",
-                originalPosition: 0,
-                rotationDegrees: 0,
-                backgroundImageUrl: Optical,
-                rotationImageUrl: "",
-                foregroundImageUrl: "", 
-                dottedImageUrl: DottedLine
-            },
-            {
-                questionNumber: 4,
-                questionText: "Can you straighten the platform?",
-                questionType: "Degrees",
-                correctAnswer: "0",
-                originalPosition: 6,
-                rotationDegrees: 0.5,
-                backgroundImageUrl: WindowCleanersBackground,
-                rotationImageUrl: WindowCleanersRotates,
-                foregroundImageUrl: WindowCleanersCables,
-                dottedImageUrl: DottedLine
-            },
-            {
-                questionNumber: 5,
-                questionText: "Is the stop sign straight?",
-                questionType: "YesOrNo",
-                correctAnswer: "No",
-                originalPosition: 0,
-                rotationDegrees: 0,
-                backgroundImageUrl: Signs,
-                rotationImageUrl: "",
-                foregroundImageUrl: "", 
-                dottedImageUrl: DottedLine
-            },
-            {
-                questionNumber: 6,
-                questionText: "Are the bottoms of the windows straight?",
-                questionType: "YesOrNo",
-                correctAnswer: "No",
-                originalPosition: 0,
-                rotationDegrees: 0,
-                backgroundImageUrl: Windows,
-                rotationImageUrl: "",
-                foregroundImageUrl: "", 
-                dottedImageUrl: DottedLine
-            },
-              {
-                questionNumber: 7,
-                questionText: "Can you straighten the picture frame?",
-                questionType: "Degrees",
-                correctAnswer: "0",
-                originalPosition: 8,
-                rotationDegrees: 0.5,
-                backgroundImageUrl: FramedPictureBackground,
-                rotationImageUrl: FramedPictureRotate,
-                foregroundImageUrl: "", dottedImageUrl: DottedLine,
-                dottedImageUrl: DottedLine
-            },
-            {
-                questionNumber: 8,
-                questionText: "Is the top of the brick wall straight?",
-                questionType: "YesOrNo",
-                correctAnswer: "Yes",
-                originalPosition: 0,
-                rotationDegrees: 0,
-                backgroundImageUrl: Wall,
-                rotationImageUrl: "",
-                foregroundImageUrl: "", 
-                dottedImageUrl: DottedLine
-            },
-             {
-                questionNumber: 9,
-                questionText: "Can you straighten this see-saw?",
-                questionType: "Degrees",
-                correctAnswer: "0",
-                originalPosition: -10,
-                rotationDegrees: 0.5,
-                backgroundImageUrl: SeesawBackground,
-                rotationImageUrl: SeesawRotate,
-                foregroundImageUrl: SeesawForeground,
-                dottedImageUrl: DottedLine
-           },
-           {
-                questionNumber: 10,
-                questionText: "Is this fringe really straight?",
-                questionType: "YesOrNo",
-                correctAnswer: "No",
-                originalPosition: 0,
-                rotationDegrees: 0,
-                backgroundImageUrl: Bangs,
-                rotationImageUrl: "",
-                foregroundImageUrl: "", 
-                dottedImageUrl: DottedLine
+    constructor(props) {
+
+        var screeWidth = window.innerWidth
+
+        super(props);
+
+        this.state = {
+            questionary: [
+                {
+                    questionNumber: 1,
+                    questionText: "Is the Leaning Tower of Pisa straight?",
+                    questionType: "YesOrNo",
+                    correctAnswer: "No",
+                    originalPosition: 0,
+                    rotationDegrees: 0,
+                    backgroundImageUrl: (screeWidth > 540) ? TowerOfPisa : Mobile_TowerOfPisa,
+                    rotationImageUrl: "",
+                    foregroundImageUrl: "",
+                    dottedImageUrl: (screeWidth > 540) ? DottedLine : Mobile_TowerOfPisaLines,
                 },
-        ],
-        currentPage: -1,
-        score: 0,
-        isQuestioning: true,
-        isShowingAnswer: false,
-        isCorrectAnswered: false
+                {
+                    questionNumber: 2,
+                    questionText: "Can you straighten the zebra crossing?",
+                    questionType: "Degrees",
+                    correctAnswer: "0",
+                    originalPosition: -9,
+                    rotationDegrees: 1,
+                    backgroundImageUrl: (screeWidth > 540) ? ZebraCrossingBackground : Mobile_ZebraCrossingBackground,
+                    rotationImageUrl: (screeWidth > 540) ? ZebraCrossingRotate : Mobile_ZebraCrossingRotate,
+                    foregroundImageUrl: "",
+                    dottedImageUrl: (screeWidth > 540) ? DottedLine : Mobile_ZebraCrossingLines,
+                },
+                {
+                    questionNumber: 3,
+                    questionText: "Are the pink lines straight?",
+                    questionType: "YesOrNo",
+                    correctAnswer: "Yes",
+                    originalPosition: 0,
+                    rotationDegrees: 0,
+                    backgroundImageUrl: (screeWidth > 540) ? Optical : Optical,
+                    rotationImageUrl: "",
+                    foregroundImageUrl: "",
+                    dottedImageUrl: (screeWidth > 540) ? DottedLine : DottedLine
+                },
+                {
+                    questionNumber: 4,
+                    questionText: "Can you straighten the platform?",
+                    questionType: "Degrees",
+                    correctAnswer: "0",
+                    originalPosition: 6,
+                    rotationDegrees: 0.5,
+                    backgroundImageUrl: (screeWidth > 540) ? WindowCleanersBackground : Mobile_WindowCleanersBackground,
+                    rotationImageUrl: (screeWidth > 540) ?  WindowCleanersRotates : Mobile_WindowCleanersRotates,
+                    foregroundImageUrl: "",
+                    dottedImageUrl: (screeWidth > 540) ? WindowCleanersBackgroundLines : Mobile_WindowCleanersBackgroundLines
+                },
+                {
+                    questionNumber: 5,
+                    questionText: "Is the stop sign straight?",
+                    questionType: "YesOrNo",
+                    correctAnswer: "No",
+                    originalPosition: 0,
+                    rotationDegrees: 0,
+                    backgroundImageUrl: (screeWidth > 540) ? Signs: Mobile_Signs,
+                    rotationImageUrl: "",
+                    foregroundImageUrl: "",
+                    dottedImageUrl: (screeWidth > 540) ? DottedLine : Mobile_Signs_Lines
+                },
+                {
+                    questionNumber: 6,
+                    questionText: "Are the bottoms of the windows straight?",
+                    questionType: "YesOrNo",
+                    correctAnswer: "No",
+                    originalPosition: 0,
+                    rotationDegrees: 0,
+                    backgroundImageUrl: (screeWidth > 540) ? Windows : Mobile_Windows,
+                    rotationImageUrl: "",
+                    foregroundImageUrl: "",
+                    dottedImageUrl: (screeWidth > 540) ? DottedLine : Mobile_Windows_Lines
+                },
+                {
+                    questionNumber: 7,
+                    questionText: "Can you straighten the picture frame?",
+                    questionType: "Degrees",
+                    correctAnswer: "0",
+                    originalPosition: 8,
+                    rotationDegrees: 0.5,
+                    backgroundImageUrl: (screeWidth > 540) ? FramedPictureBackground : Mobile_FramedPictureBackground,
+                    rotationImageUrl: (screeWidth > 540) ? FramedPictureRotate : Mobile_FramedPictureRotate,
+                    foregroundImageUrl: "",
+                    dottedImageUrl: (screeWidth > 540) ? DottedLine : Mobile_FramedPictureLines
+                },
+                {
+                    questionNumber: 8,
+                    questionText: "Is the top of the brick wall straight?",
+                    questionType: "YesOrNo",
+                    correctAnswer: "Yes",
+                    originalPosition: 0,
+                    rotationDegrees: 0,
+                    backgroundImageUrl: (screeWidth > 540) ? Wall : Mobile_Wall,
+                    rotationImageUrl: "",
+                    foregroundImageUrl: "",
+                    dottedImageUrl: (screeWidth > 540) ? DottedLine : Mobile_Wall_Lines 
+                },
+                {
+                    questionNumber: 9,
+                    questionText: "Can you straighten this see-saw?",
+                    questionType: "Degrees",
+                    correctAnswer: "0",
+                    originalPosition: -10,
+                    rotationDegrees: 0.5,
+                    backgroundImageUrl: (screeWidth > 540) ? SeesawBackground : Mobile_SeesawBackground,
+                    rotationImageUrl: (screeWidth > 540) ? SeesawRotate : Mobile_SeesawRotate,
+                    foregroundImageUrl: (screeWidth > 540) ? SeesawForeground : Mobile_SeesawForeground,
+                    dottedImageUrl: (screeWidth > 540) ? DottedLine : Mobile_SeesawLines
+                },
+                {
+                    questionNumber: 10,
+                    questionText: "Is this fringe really straight?",
+                    questionType: "YesOrNo",
+                    correctAnswer: "No",
+                    originalPosition: 0,
+                    rotationDegrees: 0,
+                    backgroundImageUrl: (screeWidth > 540) ? Bangs : Mobile_Bangs,
+                    rotationImageUrl: "",
+                    foregroundImageUrl: "",
+                    dottedImageUrl: (screeWidth > 540) ? DottedLine : Mobile_Bangs_Lines
+                },
+            ],
+            currentPage: -1,
+            score: 0,
+            isQuestioning: true,
+            isShowingAnswer: false,
+            isCorrectAnswered: false,
+        }
     }
 
     countdown = 0;
@@ -241,7 +295,7 @@ class Home extends Component {
     getCorrectPage = () => {
         let { score, isQuestioning, isShowingAnswer } = this.state;
 
-        
+
         console.log("getCorrectPage");
         this.stopTimeOut();
 
@@ -259,7 +313,7 @@ class Home extends Component {
     getWrongPage = () => {
         let { isQuestioning, isShowingAnswer } = this.state;
 
-        
+
         console.log("getWrongPage");
         this.stopTimeOut();
 
@@ -314,6 +368,7 @@ class Home extends Component {
         }
         else {
             if (isQuestioning) {
+                debugger;
                 return (
                     <React.Fragment>
                         <div className="TimerDivStyles">
@@ -363,7 +418,7 @@ class Home extends Component {
                 )
             }
             else {
-                
+                debugger;
                 return (
                     <React.Fragment>
                         <div className="TimerDivStyles">

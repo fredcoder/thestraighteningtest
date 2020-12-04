@@ -177,7 +177,6 @@
 .ImageDottedStyles {
     position: relative;
     top: -353px;
-    filter: invert(1);
 }
 
 .ImageForegroundStyles {
@@ -185,7 +184,7 @@
     top: -706px;
 }
 
-.DottedAdjustment {
+.RotateAdjustment {
     top: -706px;
 }
 
@@ -354,9 +353,10 @@
     .ImageDivStyles {
         margin: 0 auto;
         margin-top: 160px;
-        width: 240px;
-        height: 240px;
+        width: 262px;
+        height: 341px;
         background-color: #d8d8d8;
+        overflow: hidden;
     }
     .QuestionDivStyles {
         width: 296px;
@@ -384,20 +384,20 @@
     }
     .ImageRotateStyles {
         position: relative;
-        top: -243px;
+        top: -344px;
     }
     .ImageForegroundStyles {
         position: relative;
-        top: -486px;
+        top: -688px
     }
     .ImageDottedStyles {
         position: relative;
-        top: -243px;
+        top: -344px;
     }
-    .DottedAdjustment {
-        top: -486px;
+    .RotateAdjustment {
+        top: -688px;
     }
     .ForegroundAdjustment {
-        top: -729px;
+        top: -1032px;
     }
 }

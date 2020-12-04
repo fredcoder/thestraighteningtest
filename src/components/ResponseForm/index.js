@@ -33,8 +33,8 @@ const ResponseForm = (props) => {
                                 }
                                 {(questionType === "Degrees") &&
                                     <React.Fragment>
-                                        <img className="ImageRotateStyles" src={rotationImageUrl} alt={`Rotate_Q${currentPage}`} />
-                                        <img className="ImageDottedStyles DottedAdjustment" src={dottedImageUrl} alt={`Dotted_Q${currentPage}`} />
+                                        <img className="ImageDottedStyles" src={dottedImageUrl} alt={`Dotted_Q${currentPage}`} />
+                                        <img className="ImageRotateStyles RotateAdjustment" src={rotationImageUrl} alt={`Rotate_Q${currentPage}`} />
                                     </React.Fragment>
                                 }
                                 {(foregroundImageUrl != "") &&

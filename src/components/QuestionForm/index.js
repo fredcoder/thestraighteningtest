@@ -23,18 +23,18 @@ const QuestionForm = (props) => {
                     <div>A</div>
                     <div><span>Ortondontics<br />Australia</span></div>
                 </div>
-                <FadeIn delay={50} transitionDuration ={800}>
-                <div className="ImageDivStyles">
-                    <div className="ImageBoxStyles">
-                        <img className="ImageBackgroundStyles" src={backgroundImageUrl} alt={`Background_Q${currentPage}`} />
-                        {(questionType === "Degrees") &&
-                            <img id="rotationImageUrl" className="ImageRotateStyles" src={rotationImageUrl} alt={`Rotate_Q${currentPage}`} onLoad={()=>setInitialPosition(originalPosition)} />
-                        }
-                        {(foregroundImageUrl != "") &&
-                            <img className="ImageForegroundStyles" src={foregroundImageUrl} alt={`Foreground_Q${currentPage}`} />
-                        }
+                <FadeIn delay={50} transitionDuration={800}>
+                    <div className="ImageDivStyles">
+                        <div className="ImageBoxStyles">
+                            <img className="ImageBackgroundStyles" src={backgroundImageUrl} alt={`Background_Q${currentPage}`} />
+                            {(questionType === "Degrees") &&
+                                <img id="rotationImageUrl" className="ImageRotateStyles" src={rotationImageUrl} alt={`Rotate_Q${currentPage}`} onLoad={() => setInitialPosition(originalPosition)} />
+                            }
+                            {(foregroundImageUrl != "") &&
+                                <img className="ImageForegroundStyles" src={foregroundImageUrl} alt={`Foreground_Q${currentPage}`} />
+                            }
+                        </div>
                     </div>
-                </div>
                 </FadeIn>
                 <div className="QuestionDivStyles">{questionText}</div>
                 {(questionType === "YesOrNo") &&
@@ -49,10 +49,10 @@ const QuestionForm = (props) => {
                 }
                 {(questionType === "Degrees") &&
                     <div className="AnswerOptionsStyles">
-                        <div className="AnswerButtonStyles Yes" onClick={()=>rotateImageLeft(rotationDegrees, showCorrectAnswer)}>
+                        <div className="AnswerButtonStyles Yes" onClick={() => rotateImageLeft(rotationDegrees, showCorrectAnswer)}>
                             <span>Left</span>
                         </div>
-                        <div className="AnswerButtonStyles No" onClick={()=>rotateImageRight(rotationDegrees, showCorrectAnswer)}>
+                        <div className="AnswerButtonStyles No" onClick={() => rotateImageRight(rotationDegrees, showCorrectAnswer)}>
                             <span>Right</span>
                         </div>
                     </div>
@@ -65,13 +65,11 @@ const QuestionForm = (props) => {
 
 export function setInitialPosition(originalPosition) {
     debugger;
-    console.log("originalPosition ",originalPosition);
-    if (angle === 0) {
-        angle = originalPosition;
-        var img = document.getElementById('rotationImageUrl');
-        img.style.transform = `rotate(${angle}deg)`;
-        console.log("angle ",angle);
-    }
+    console.log("originalPosition ", originalPosition);
+    angle = originalPosition;
+    var img = document.getElementById('rotationImageUrl');
+    img.style.transform = `rotate(${angle}deg)`;
+    console.log("angle ", angle);
 }
 
 
@@ -80,10 +78,9 @@ export function rotateImageLeft(rotationDegrees, showCorrectAnswer) {
     var img = document.getElementById('rotationImageUrl');
 
     img.style.transform = `rotate(${angle}deg)`;
-    console.log("current angle: ",angle);
+    console.log("current angle: ", angle);
 
-    if (angle === 0)
-    {
+    if (angle === 0) {
         showCorrectAnswer();
     }
 }
@@ -93,10 +90,9 @@ export function rotateImageRight(rotationDegrees, showCorrectAnswer) {
     var img = document.getElementById('rotationImageUrl');
 
     img.style.transform = `rotate(${angle}deg)`;
-    console.log("current angle: ",angle);
+    console.log("current angle: ", angle);
 
-    if (angle === 0)
-    {
+    if (angle === 0) {
         showCorrectAnswer();
     }
 }
