@@ -3,7 +3,7 @@ import FadeIn from 'react-fade-in';
 import './styles.css';
 
 import Explosion from '../../assets/images/explosion.png';
-
+import AOLogo from '../../assets/images/AOLogo.jpg';
 
 const ResponseForm = (props) => {
 
@@ -18,9 +18,7 @@ const ResponseForm = (props) => {
                     <p className="ScoreTextStyles">SCORE: {score}/{currentPage + 1}</p>
                 </div>
                 <div className="OALogoDivStyles">
-                    <div>O</div>
-                    <div>A</div>
-                    <div><span>Ortondontics<br />Australia</span></div>
+                    <img src={AOLogo} alt="AOLogo" />
                 </div>
                 {(isCorrectAnswered)
                     ?

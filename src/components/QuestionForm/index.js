@@ -2,12 +2,14 @@ import React from "react";
 import FadeIn from 'react-fade-in';
 import './styles.css';
 
+import AOLogo from '../../assets/images/AOLogo.jpg';
+
 var angle = 0;
 
 const QuestionForm = (props) => {
 
     let { backgroundStyles, score, currentPage, backgroundImageUrl, rotationImageUrl, foregroundImageUrl, questionText, questionType,
-        originalPosition, rotationDegrees, correctAnswer, showCorrectAnswer, showWrongAnswer } = props;
+        originalPosition, rotationDegrees, correctAnswer, showCorrectAnswer, showWrongAnswer, setLastPosition } = props;
 
 
     return (
@@ -19,9 +21,7 @@ const QuestionForm = (props) => {
                     <p className="ScoreTextStyles">SCORE: {score}/{currentPage + 1}</p>
                 </div>
                 <div className="OALogoDivStyles">
-                    <div>O</div>
-                    <div>A</div>
-                    <div><span>Ortondontics<br />Australia</span></div>
+                    <img src={AOLogo} alt="AOLogo" />
                 </div>
                 <FadeIn delay={50} transitionDuration={800}>
                     <div className="ImageDivStyles">
@@ -49,10 +49,10 @@ const QuestionForm = (props) => {
                 }
                 {(questionType === "Degrees") &&
                     <div className="AnswerOptionsStyles">
-                        <div className="AnswerButtonStyles Yes" onClick={() => rotateImageLeft(rotationDegrees, showCorrectAnswer)}>
+                        <div className="AnswerButtonStyles Yes" onClick={() => rotateImageLeft(rotationDegrees, setLastPosition)}>
                             <span>Left</span>
                         </div>
-                        <div className="AnswerButtonStyles No" onClick={() => rotateImageRight(rotationDegrees, showCorrectAnswer)}>
+                        <div className="AnswerButtonStyles No" onClick={() => rotateImageRight(rotationDegrees, setLastPosition)}>
                             <span>Right</span>
                         </div>
                     </div>
@@ -73,28 +73,24 @@ export function setInitialPosition(originalPosition) {
 }
 
 
-export function rotateImageLeft(rotationDegrees, showCorrectAnswer) {
+export function rotateImageLeft(rotationDegrees, setLastPosition) {
     angle = angle - rotationDegrees;
     var img = document.getElementById('rotationImageUrl');
 
     img.style.transform = `rotate(${angle}deg)`;
     console.log("current angle: ", angle);
 
-    if (angle === 0) {
-        showCorrectAnswer();
-    }
+    setLastPosition(angle);
 }
 
-export function rotateImageRight(rotationDegrees, showCorrectAnswer) {
+export function rotateImageRight(rotationDegrees, setLastPosition) {
     angle = angle + rotationDegrees;
     var img = document.getElementById('rotationImageUrl');
 
     img.style.transform = `rotate(${angle}deg)`;
     console.log("current angle: ", angle);
 
-    if (angle === 0) {
-        showCorrectAnswer();
-    }
+    setLastPosition(angle);
 }
 
 export default QuestionForm;

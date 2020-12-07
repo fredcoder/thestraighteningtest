@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import TimerIcon from '../../assets/images/timer-icon.png';
+import Straightening from '../../assets/images/Straightening.png';
+import AOLogo from '../../assets/images/AOLogo.jpg';
 
 /* DESKTOP */
 import TowerOfPisa from '../../assets/images/Desktop/Q1/Q1_TowerOfPisa_700x700.png';
@@ -128,7 +130,7 @@ class Home extends Component {
                     originalPosition: 6,
                     rotationDegrees: 0.5,
                     backgroundImageUrl: (screeWidth > 540) ? WindowCleanersBackground : Mobile_WindowCleanersBackground,
-                    rotationImageUrl: (screeWidth > 540) ?  WindowCleanersRotates : Mobile_WindowCleanersRotates,
+                    rotationImageUrl: (screeWidth > 540) ? WindowCleanersRotates : Mobile_WindowCleanersRotates,
                     foregroundImageUrl: "",
                     dottedImageUrl: (screeWidth > 540) ? WindowCleanersBackgroundLines : Mobile_WindowCleanersBackgroundLines
                 },
@@ -139,7 +141,7 @@ class Home extends Component {
                     correctAnswer: "No",
                     originalPosition: 0,
                     rotationDegrees: 0,
-                    backgroundImageUrl: (screeWidth > 540) ? Signs: Mobile_Signs,
+                    backgroundImageUrl: (screeWidth > 540) ? Signs : Mobile_Signs,
                     rotationImageUrl: "",
                     foregroundImageUrl: "",
                     dottedImageUrl: (screeWidth > 540) ? DottedLine : Mobile_Signs_Lines
@@ -178,7 +180,7 @@ class Home extends Component {
                     backgroundImageUrl: (screeWidth > 540) ? Wall : Mobile_Wall,
                     rotationImageUrl: "",
                     foregroundImageUrl: "",
-                    dottedImageUrl: (screeWidth > 540) ? DottedLine : Mobile_Wall_Lines 
+                    dottedImageUrl: (screeWidth > 540) ? DottedLine : Mobile_Wall_Lines
                 },
                 {
                     questionNumber: 9,
@@ -210,6 +212,7 @@ class Home extends Component {
             isQuestioning: true,
             isShowingAnswer: false,
             isCorrectAnswered: false,
+            lastPositionSelected: 360
         }
     }
 
@@ -217,30 +220,40 @@ class Home extends Component {
     timeOut = 0;
 
     refreshCountdown = () => {
+
         console.log("refreshCountdown");
         const thisShowWrongAnswer = this.showWrongAnswer.bind(this);
+        const thisShowCorrectAnswer = this.showCorrectAnswer.bind(this);
         const thisStopCountdown = this.stopCountdown.bind(this);
+        const thisGetLastPosition = this.getLastPosition.bind(this);
 
         var seconds = document.getElementById("countdown").textContent;
+
         this.countdown = setInterval(function () {
             seconds--;
             try {
-                document.getElementById("countdown").textContent = seconds;
+                document.getElementById("countdown").textContent = "0" + seconds / 100;
 
                 if (seconds <= 0) {
                     thisStopCountdown();
-                    document.getElementById("countdown").textContent = 0;
+                    document.getElementById("countdown").textContent = "00.00";
                     console.log("seconds: ", seconds);
                     if (seconds === 0) {
-                        thisShowWrongAnswer();
+                        if (thisGetLastPosition() === 0) {
+                            thisShowCorrectAnswer();
+                            return;
+                        }
+                        else {
+                            thisShowWrongAnswer();
+                            return;
+                        }
                     }
-                    return;
                 }
             } catch {
                 thisStopCountdown();
             }
 
-        }, 1000);
+        }, 10);
     }
 
     stopCountdown = () => {
@@ -331,8 +344,17 @@ class Home extends Component {
             currentPage: (this.state.currentPage + 1),
             isQuestioning: true
         })
-        document.getElementById("countdown").textContent = 10;
+        document.getElementById("countdown").textContent = 1000;
         this.refreshCountdown();
+    }
+
+    setLastPosition = (value) => {
+        this.setState({ lastPositionSelected: value });
+    }
+
+    getLastPosition = () => {
+        let { lastPositionSelected } = this.state;
+        return lastPositionSelected;
     }
 
     render() {
@@ -341,15 +363,13 @@ class Home extends Component {
         if (currentPage === -1) {
             return (
                 <React.Fragment>
-                    <span id="countdown" hidden="hidden">10</span>
+                    <span id="countdown" hidden="hidden">10.00</span>
                     <div className="BackgroundYellowDivStyles">
                         <div className="OALogoDivStyles">
-                            <div>O</div>
-                            <div>A</div>
-                            <div><span>Ortondontics<br />Australia</span></div>
+                            <img src={AOLogo} alt="AOLogo"/>
                         </div>
                         <div className="HomeImageDivStyles">
-                            Image
+                            <img src={Straightening} alt="Straightening"/>
                         </div>
                         <div className="HomeTitleDivStyles">
                             <p>It takes a certain type of person to ace this test.</p>
@@ -372,8 +392,14 @@ class Home extends Component {
                 return (
                     <React.Fragment>
                         <div className="TimerDivStyles">
-                            <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
-                            <div className="TimerTextStyles">00.<span id="countdown">10</span></div>
+                            <div className="TimeBoxStyles">
+                                <div className="TimerIconBoxStyles">
+                                    <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
+                                </div>
+                                <div className="TimerTextBoxStyles">
+                                    <div className="TimerTextStyles"><span id="countdown">1000</span></div>
+                                </div>
+                            </div>
                         </div>
                         <QuestionForm
                             backgroundStyles={"BackgroundPinkDivStyles"}
@@ -389,6 +415,7 @@ class Home extends Component {
                             rotationDegrees={questionary[currentPage].rotationDegrees}
                             showCorrectAnswer={this.showCorrectAnswer}
                             showWrongAnswer={this.showWrongAnswer}
+                            setLastPosition={(val) => this.setLastPosition(val)}
                         />
                     </React.Fragment>
                 )
@@ -398,8 +425,14 @@ class Home extends Component {
                 return (
                     <React.Fragment>
                         <div className="TimerDivStyles">
-                            <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
-                            <div className="TimerTextStyles">00.<span id="countdown">10</span></div>
+                            <div className="TimeBoxStyles">
+                                <div className="TimerIconBoxStyles">
+                                    <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
+                                </div>
+                                <div className="TimerTextBoxStyles">
+                                    <div className="TimerTextStyles"><span id="countdown">1000</span></div>
+                                </div>
+                            </div>
                         </div>
                         <AnswerForm
                             backgroundStyles={"BackgroundPinkDivStyles"}
@@ -422,8 +455,14 @@ class Home extends Component {
                 return (
                     <React.Fragment>
                         <div className="TimerDivStyles">
-                            <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
-                            <div className="TimerTextStyles">00.<span id="countdown">10</span></div>
+                            <div className="TimeBoxStyles">
+                                <div className="TimerIconBoxStyles">
+                                    <img className="TimerIconStyles" src={TimerIcon} alt="Timer Icon" />
+                                </div>
+                                <div className="TimerTextBoxStyles">
+                                    <div className="TimerTextStyles"><span id="countdown">1000</span></div>
+                                </div>
+                            </div>
                         </div>
                         <ResponseForm
                             backgroundStyles={"BackgroundPinkDivStyles"}
