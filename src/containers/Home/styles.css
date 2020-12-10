@@ -47,9 +47,9 @@
 .HomeButtonStyles {
     outline: none;
     display: inline;
-    padding: 11px 24px 11px 24px;
+    padding: 8px 24px 10px 24px;
     border: solid 3px #231f20;
-    border-radius: 25px;
+    border-radius: 30px;
     background-color: white;
     cursor: pointer;
     display: inline-block;
@@ -63,12 +63,20 @@
     transition-property: transform;
     font-family: GalanoGrotesque;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 .HomeButtonStyles:hover {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+}
+
+.ResultButtonStyles{
+    width: 150px;
+}
+
+.ResultButtonEmptyStyles{
+    margin-left: 20px;
 }
 
 /* QUESTIONARY */
@@ -250,9 +258,9 @@
 .AnswerButtonStyles {
     outline: none;
     display: inline;
-    padding: 11px 26px 11px 26px;
+    padding: 8px 26px 10px 26px;
     border: solid 3px #231f20;
-    border-radius: 25px;
+    border-radius: 30px;
     background-color: white;
     cursor: pointer;
     display: inline-block;
@@ -265,7 +273,7 @@
     -webkit-transition-property: transform;
     transition-property: transform;
     font-family: GalanoGrotesque;
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     color: #231f20;
 }
@@ -289,6 +297,27 @@
 
 .Red {
     background-color: rgb(235, 78, 80) !important;
+}
+
+.HomeResultP1DivStyles{
+    margin-top: 10px;
+    font-family: 'GalanoGrotesque';
+    font-size: 24px;
+}
+
+.HomeResultP2DivStyles{
+    font-family: 'GalanoGrotesque';
+    font-size: 60px;
+    line-height: 60px;
+}
+
+.HomeResultP3DivStyles{
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 750px; /*736px*/
+    font-family: 'GalanoGrotesque';
+    font-weight: 100;
+    text-align: center;
 }
 
 /* Media Query for Mobile */
@@ -396,12 +425,12 @@
         display: inline;
         width: 224px;
         height: 40px;
-        padding: 13px 24px 13px 24px;
-        border-radius: 25px;
+        padding: 8px 24px 10px 24px;
+        border-radius: 30px;
         border: solid 3px #000000;
         background-color: white;
         font-family: GalanoGrotesque;
-        font-size: 18px;
+        font-size: 24px;
         font-weight: bold;
         color: #231f20;
     }
@@ -422,5 +451,23 @@
     }
     .ForegroundAdjustment {
         top: -1032px;
+    }
+
+    .HomeResultP2DivStyles {
+        font-family: 'GalanoGrotesque';
+        font-size: 50px;
+        line-height: 60px;
+    }
+
+    .HomeResultP3DivStyles{
+        padding: 0 20px;
+    }
+
+    .ResultButtonStyles {
+        display: block;
+        margin: 0 auto;
+    }
+    .ResultButtonEmptyStyles {
+        margin-top: 10px;
     }
 }

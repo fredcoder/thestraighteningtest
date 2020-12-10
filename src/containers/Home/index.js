@@ -76,6 +76,9 @@ import ResponseForm from '../../components/ResponseForm';
 
 import './styles.css';
 
+import HelmetMetaData from '../../functions/HelmetMetaData';
+import { FacebookShareButton, FacebookIcon } from 'react-share';
+
 class Home extends Component {
 
     constructor(props) {
@@ -340,12 +343,75 @@ class Home extends Component {
     }
 
     getNextPage = () => {
-        this.setState({
-            currentPage: (this.state.currentPage + 1),
-            isQuestioning: true
-        })
-        document.getElementById("countdown").textContent = 1000;
-        this.refreshCountdown();
+        let { currentPage, score } = this.state;
+
+        console.log("currentPage: ", currentPage);
+
+        if (currentPage < 1) {
+            this.setState({
+                currentPage: (currentPage + 1),
+                isQuestioning: true
+            })
+            document.getElementById("countdown").textContent = 1000;
+            this.refreshCountdown();
+        }
+        else {
+            console.log("Results");
+            this.setState({
+                currentPage: (currentPage + 1)
+            })
+        }
+    }
+
+    getResultText = (value) => {
+        switch (value) {
+            case 0:
+                return <p>Not gonna lie, that’s pretty bad. Don’t worry though, it takes a certain type of person to ace this test. You know, like an orthodontist. A dental degree, plus three years’ specialist training in straightening teeth and aligning jaws, orthodontists are the true 10/10 straightening experts.</p>
+                break;
+            case 1:
+                return <p>Seems you’re not a very good judge of straightness... unlike the experts over at Orthodontics Australia.<br /><br />
+                Orthodontists have completed a dental degree, plus three years’ specialist training in straightening teeth and aligning jaws. That makes them the kind of people who’d get 10/10.</p>
+                break;
+            case 2:
+                return <p>Sorry, it looks like you’re not much of an expert. Luckily, when it comes to more important things – like straightening your teeth – orthodontists get it right every time.<br /><br />
+                If you really care about straight teeth, make sure you’re seeing the type of person who’d ace The Straightening Test.</p>
+                break;
+            case 3:
+                return <p>Look, three is better than nothing, but you should probably still get an expert opinion when it comes to straightening more important things – like your teeth.<br /><br />
+                With a dental degree, plus three years’ specialist training in straightening teeth and aligning jaws, they’re the kind of people you want straightening your teeth!</p>
+                break;
+            case 4:
+                return <p>Nice try, but you’re no real match for our orthodontists.<br /><br />
+                With a dental degree plus three years’ specialist training up their sleeves, they’re the kind of people who ace this test every time. And the type of people you want straightening your teeth!</p>
+                break;
+            case 5:
+                return <p>Good try, but it takes a certain type of person to ace this test.<br /><br />
+                Maybe it’s best if you left the straightening up to an expert orthodontist - someone with a dental degree, plus three years’ specialist training in straightening teeth and aligning jaws.</p>
+                break;
+            case 6:
+                return <p>Looking good. But not (quite) as good as an orthodontist.<br /><br />
+                It takes a certain type of person to ace this test, and all of our orthodontists get 10/10 every time! They’re the kind of people you can trust to straighten your teeth or align your jaw.</p>
+                break;
+            case 7:
+                return <p>Woah there! Looks like you’re giving our orthodontists a run for their money.<br /><br />
+                With a dental degree, plus three years’ specialist training up their sleeves, orthodontists are the experts when it comes to straightening teeth and aligning jaws. It takes a certain type of person to get that right every time.</p>
+                break;
+            case 8:
+                return <p>Holy macaroni! Your eye for straightening is almost as good as an orthodontist’s! But not quite.<br /><br />
+                It takes a certain type of person to get 10/10 on this test – someone who’s completed a dental degree and undergone three years’ specialist training in straightening teeth and aligning jaws.</p>
+                break;
+            case 9:
+                return <p>That’s really good. Really, really good! Ever wondered if maybe you’re in the wrong profession?<br /><br />
+                You could have been an orthodontist. You know, the type of person who’s completed a dental degree, plus three years’ specialist training to become an expert in straightening teeth and aligning jaws.</p>
+                break;
+            case 10:
+                return <p>Look, you’re pretty good okay? In fact, the only other type of person who gets 10/10 on this test is an orthodontist.<br /><br />
+                You know, a professional who’s completed a dental degree, plus undergone 3 years’ specialist training to become experts at straightening teeth and aligning jaws.</p>
+                break;
+            default:
+                return <p>testing</p>
+                break;
+        }
     }
 
     setLastPosition = (value) => {
@@ -360,16 +426,64 @@ class Home extends Component {
     render() {
         let { questionary, currentPage, score, isQuestioning, isShowingAnswer, isCorrectAnswered } = this.state;
 
+        if (currentPage === 2) {
+
+            return (
+                <React.Fragment>
+                    <HelmetMetaData>
+                    </HelmetMetaData>
+                    <span id="countdown" hidden="hidden">10.00</span>
+                    <div className="BackgroundYellowDivStyles">
+                        <div className="OALogoDivStyles">
+                            <img src={AOLogo} alt="AOLogo" />
+                        </div>
+                        <div className="HomeImageDivStyles">
+                            <img src={Straightening} alt="Straightening" />
+                        </div>
+                        <div className="HomeResultP1DivStyles">
+                            <p>The results are in.</p>
+                        </div>
+                        <div className="HomeResultP2DivStyles">
+                            <p>You got {score}/10!</p>
+                        </div>
+                        <div className="HomeResultP3DivStyles">
+                            {
+                                this.getResultText(score)
+                            }
+                            <p>Find a specialist at orthodonticsaustralia.org.au</p>
+                        </div>
+                        <div className="HomeButtonDivStyles">
+                            <div className="HomeButtonStyles ResultButtonStyles" onClick={this.getNextPage}>
+                                Share
+                            </div>
+                            <FacebookShareButton
+                                url={`https://isitstraight.000webhostapp.com/${score}.html`}
+                                imageurl ={"https://llandscapes-10674.kxcdn.com/wp-content/uploads/2019/07/lighting.jpg"}
+                                quote={"thestraighteningtest - Can you ace this test?"}
+                                hashtag="#thestraighteningtest"
+                                className={"classes.socialMediaButton"}>
+                                <FacebookIcon size={36} />
+                            </FacebookShareButton>
+
+                            <div className="HomeButtonStyles ResultButtonStyles ResultButtonEmptyStyles" onClick={this.getNextPage}>
+                                Learn more
+                            </div>
+                        </div>
+                    </div>
+                </React.Fragment>
+            )
+        }
+
         if (currentPage === -1) {
             return (
                 <React.Fragment>
                     <span id="countdown" hidden="hidden">10.00</span>
                     <div className="BackgroundYellowDivStyles">
                         <div className="OALogoDivStyles">
-                            <img src={AOLogo} alt="AOLogo"/>
+                            <img src={AOLogo} alt="AOLogo" />
                         </div>
                         <div className="HomeImageDivStyles">
-                            <img src={Straightening} alt="Straightening"/>
+                            <img src={Straightening} alt="Straightening" />
                         </div>
                         <div className="HomeTitleDivStyles">
                             <p>It takes a certain type of person to ace this test.</p>
